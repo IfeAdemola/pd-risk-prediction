@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: pd-risk-prediction
+Version: 0.1.0
+Summary: Multimodal machine learning framework for Parkinson's disease risk prediction
+Requires-Python: <3.13,>=3.11
+Requires-Dist: pyyaml
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: openpyxl
+Requires-Dist: scikit-learn
+Requires-Dist: scikit-survival
+Requires-Dist: lifelines
+Requires-Dist: statsmodels
+Requires-Dist: upsetplot

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pd-risk-prediction"
+version = "0.1.0"
+description = "Multimodal machine learning framework for Parkinson's disease risk prediction"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "pyyaml",
+    "pandas",
+    "numpy",
+    "openpyxl",
+    "scikit-learn",
+    "scikit-survival==0.28.0",
+    "lifelines",
+    "statsmodels",
+    "upsetplot",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,21 @@
+.venv/
+
+# Python packaging
+*.egg-info/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Research data (not tracked)
+data/raw/
+data/processed/
+data/exploratory
+
+# Output files (not tracked)
+output/
+
+# Keep data folder structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/exploratory/.gitkeep
