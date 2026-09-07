@@ -1,0 +1,62 @@
+name: ppmi_genetics_v1
+
+description: >
+  Participant-level genetic features for survival prediction of
+  Parkinson's disease conversion in the PPMI at-risk cohort.
+  Includes pathogenic variant carrier status, APOE status,
+  polygenic risk scores, and genetic principal components.
+
+modality: genetics
+
+timepoint:
+  baseline: true # Cross-sectional (Only at screening visit); Still confirm!
+
+identifiers:
+  - PATNO
+  - EVENT_ID
+
+features:
+
+  pathogenic_variants:
+    categorical:
+      columns:
+        - LRRK2
+        - GBA
+        #- SNCA
+        #- PRKN
+        #- PARK7
+        #- PINK1
+        #- VPS35
+        #- APOE # More likely to be relevant for cognitive decline (PD with dementia) than PD conversion
+
+    continuous:
+      columns:
+        - PATHVAR_COUNT
+
+
+  polygenic_risk:
+    continuous:
+      columns:
+        #- Genetic_PRS_PRS88
+        #- Genetic_PRS_PRS83
+        #- Genetic_PRS_PRSp90
+        #- Genetic_PRS_PRSp88
+        #- Genetic_PRS_PRSp87
+        - Genetic_PRS_PRSp85
+
+        - Genetic_PRS_PC1
+        - Genetic_PRS_PC2
+        - Genetic_PRS_PC3
+        #- Genetic_PRS_PC4
+        #- Genetic_PRS_PC5
+        #- Genetic_PRS_PC6
+        #- Genetic_PRS_PC7
+        #- Genetic_PRS_PC8
+        #- Genetic_PRS_PC9
+        #- Genetic_PRS_PC10
+
+
+    categorical:
+      columns:
+        #- Genetic_PRS_InfPop
+

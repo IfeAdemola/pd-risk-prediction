@@ -1,0 +1,214 @@
+name: ppmi_mri
+
+description: >
+  Quantitative MRI variables for survival prediction of
+  Parkinson's disease conversion in the PPMI at-risk cohort.
+  Data are derived from the PPMI MRI Core Lab - Quantitative MRI dataset.
+
+modality: mri
+
+timepoint:
+  baseline: true # cross-sectional rather than longitudinal (all entries are at baseline visit)
+
+identifiers:
+  - PATNO
+  - EVENT_ID
+
+features: 
+  cortical_thickness:
+    continuous:
+      columns:
+        #- lh_bankssts
+        #- lh_caudalanteriorcingulate
+        #- lh_caudalmiddlefrontal
+        #- lh_cuneus
+        #- lh_entorhinal
+        #- lh_fusiform
+        #- lh_inferiorparietal
+        #- lh_inferiortemporal
+        #- lh_isthmuscingulate
+        #- lh_lateraloccipital
+        #- lh_lateralorbitofrontal
+        #- lh_lingual
+        #- lh_medialorbitofrontal
+        #- lh_middletemporal
+        #- lh_parahippocampal
+        #- lh_paracentral
+        #- lh_parsopercularis
+        #- lh_parsorbitalis
+        #- lh_parstriangularis
+        #- lh_pericalcarine
+        #- lh_postcentral
+        #- lh_posteriorcingulate
+        #- lh_precentral
+        #- lh_precuneus
+        #- lh_rostralanteriorcingulate
+        #- lh_rostralmiddlefrontal
+        #- lh_superiorfrontal
+        #- lh_superiorparietal
+        #- lh_superiortemporal
+        #- lh_supramarginal
+        #- lh_frontalpole
+        #- lh_temporalpole
+        #- lh_transversetemporal
+        #- lh_insula
+        - lh_MeanThickness  # Global value. Mean of other variables, could cause redundancy
+        #- rh_bankssts
+        #- rh_caudalanteriorcingulate
+        #- rh_caudalmiddlefrontal
+        #- rh_cuneus
+        #- rh_entorhinal
+        #- rh_fusiform
+        #- rh_inferiorparietal
+        #- rh_inferiortemporal
+        #- rh_isthmuscingulate
+        #- rh_lateraloccipital
+        #- rh_lateralorbitofrontal
+        #- rh_lingual
+        #- rh_medialorbitofrontal
+        #- rh_middletemporal
+        #- rh_parahippocampal
+        #- rh_paracentral
+        #- rh_parsopercularis
+        #- rh_parsorbitalis
+        #- rh_parstriangularis
+        #- rh_pericalcarine
+        #- rh_postcentral
+        #- rh_posteriorcingulate
+        #- rh_precentral
+        #- rh_precuneus
+        #- rh_rostralanteriorcingulate
+        #- rh_rostralmiddlefrontal
+        #- rh_superiorfrontal
+        #- rh_superiorparietal
+        #- rh_superiortemporal
+        #- rh_supramarginal
+        #- rh_frontalpole
+        #- rh_temporalpole
+        #- rh_transversetemporal
+        #- rh_insula
+        - rh_MeanThickness  # Global value. Mean of other variables, could cause redundancy
+
+  cortical_surface_area:
+
+    continuous:
+      columns:
+        # APARC cortical surface area variables
+        #- lh_bankssts
+        #- lh_caudalanteriorcingulate
+        #- lh_caudalmiddlefrontal
+        #- lh_cuneus
+        #- lh_entorhinal
+        #- lh_fusiform
+        #- lh_inferiorparietal
+        #- lh_inferiortemporal
+        #- lh_isthmuscingulate
+        #- lh_lateraloccipital
+        #- lh_lateralorbitofrontal
+        #- lh_lingual
+        #- lh_medialorbitofrontal
+        #- lh_middletemporal
+        #- lh_parahippocampal
+        #- lh_paracentral
+        #- lh_parsopercularis
+        #- lh_parsorbitalis
+        #- lh_parstriangularis
+        #- lh_pericalcarine
+        #- lh_postcentral
+        #- lh_posteriorcingulate
+        #- lh_precentral
+        #- lh_precuneus
+        #- lh_rostralanteriorcingulate
+        #- lh_rostralmiddlefrontal
+        #- lh_superiorfrontal
+        #- lh_superiorparietal
+        #- lh_superiortemporal
+        #- lh_supramarginal
+        #- lh_frontalpole
+        #- lh_temporalpole
+        #- lh_transversetemporal
+        #- lh_insula
+        - lh_WhiteSurfArea  # Global value: hemispheric/global surface-area summary
+        #- rh_bankssts
+        #- rh_caudalanteriorcingulate
+        #- rh_caudalmiddlefrontal
+        #- rh_cuneus
+        #- rh_entorhinal
+        #- rh_fusiform
+        #- rh_inferiorparietal
+        #- rh_inferiortemporal
+        #- rh_isthmuscingulate
+        #- rh_lateraloccipital
+        #- rh_lateralorbitofrontal
+        #- rh_lingual
+        #- rh_medialorbitofrontal
+        #- rh_middletemporal
+        #- rh_parahippocampal
+        #- rh_paracentral
+        #- rh_parsopercularis
+        #- rh_parsorbitalis
+        #- rh_parstriangularis
+        #- rh_pericalcarine
+        #- rh_postcentral
+        #- rh_posteriorcingulate
+        #- rh_precentral
+        #- rh_precuneus
+        #- rh_rostralanteriorcingulate
+        #- rh_rostralmiddlefrontal
+        #- rh_superiorfrontal
+        #- rh_superiorparietal
+        #- rh_superiortemporal
+        #- rh_supramarginal
+        #- rh_frontalpole
+        #- rh_temporalpole
+        #- rh_transversetemporal
+        #- rh_insula
+        - rh_WhiteSurfArea  # Global value: hemispheric/global surface-area summary
+
+  regional_volume:
+    continuous:
+      columns:
+
+        # Basal ganglia
+        - Left_Caudate
+        - Right_Caudate
+        - Left_Putamen
+        - Right_Putamen
+        - Left_Pallidum
+        - Right_Pallidum
+        - Left_Accumbens_area
+        - Right_Accumbens_area
+
+        # Thalamus
+        - Left_Thalamus
+        - Right_Thalamus
+
+        # Limbic
+        - Left_Hippocampus
+        - Right_Hippocampus
+        # - Left_Amygdala
+        # - Right_Amygdala
+
+        # Cerebellum
+        # - Left_Cerebellum_Cortex
+        # - Right_Cerebellum_Cortex
+        # - Left_Cerebellum_White_Matter
+        # - Right_Cerebellum_White_Matter
+
+        # Ventricular / CSF
+        #- Left_Lateral_Ventricle
+        #- Right_Lateral_Ventricle
+        #- Left_Inf_Lat_Vent
+        #- Right_Inf_Lat_Vent
+        #- CSF
+
+        # Global measures
+        # - BrainSegVol
+        # - TotalGrayVol
+        # - CortexVol
+        # - SubCortGrayVol
+        # - CerebralWhiteMatterVol
+        # - SupraTentorialVol
+        # - SupraTentorialVolNotVent
+        # - BrainSegVolNotVent
+        - EstimatedTotalIntraCranialVol  # Important for scaling

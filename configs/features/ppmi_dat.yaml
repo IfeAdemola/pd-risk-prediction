@@ -1,0 +1,75 @@
+name: ppmi_dat
+
+description: >
+  Quantitative DAT SPECT variables for survival prediction of
+  Parkinson's disease conversion in the PPMI at-risk cohort.
+  Data are derived from the Xing Core Lab - Quant SBR dataset.
+
+modality: dat
+
+timepoint:
+  baseline: false # then should be longitudinal CONFIRM!
+
+identifiers:
+  - PATNO
+  - EVENT_ID
+  - DATSCAN_DATE
+
+metadata:
+  - PROTOCOL
+  - DATSCAN_LIGAND
+  - PREVIOUSLY_ACQUIRED
+
+quality_control:
+  - DATSCAN_ANALYZED
+  - DATSCAN_NOT_ANALYZED_REASON
+  - DATSCAN_OTHER_SPECIFY
+
+# features from the curated file (PPMI_Curated_Data_Cut_Public_20260511.csv)
+features:
+
+  striatum:
+
+    continuous:
+      columns:
+        - MIA_STRIATUM_L
+        - MIA_STRIATUM_R
+
+  caudate:
+
+    continuous:
+      columns:
+        - MIA_CAUDATE_L
+        - MIA_CAUDATE_R
+
+  putamen:
+
+    continuous:
+      columns:
+        - MIA_PUTAMEN_L
+        - MIA_PUTAMEN_R
+
+
+# Features from XING_Core_Lab_-_Quant_SBR_28Jul2026.csv
+#features:
+#
+#  striatum:
+#
+#    continuous:
+#      columns:
+#        - STRIATUM_L_REF_CWM
+#        - STRIATUM_R_REF_CWM
+#
+#  caudate:
+#
+#    continuous:
+#      columns:
+#        - CAUDATE_L_REF_CWM
+#        - CAUDATE_R_REF_CWM
+#
+#  putamen:
+#
+#    continuous:
+#      columns:
+#        - PUTAMEN_L_REF_CWM
+#        - PUTAMEN_R_REF_CWM

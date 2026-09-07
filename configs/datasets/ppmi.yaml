@@ -1,0 +1,51 @@
+dataset_name: PPMI
+
+clinical:
+  file: "data/raw/ppmi/PPMI_Curated_Data_Cut_Public_20260511.xlsx"
+  key: ["PATNO", "EVENT_ID"]
+  data_version: "20260511"  # ppmi defined version: 20260511 
+  sheet: "20260511"
+
+dat:
+  #file: "data/raw/ppmi/Xing_Core_Lab_-_Quant_SBR_28Jul2026.csv"
+  file: "data/processed/cohort/ppmi_risk_cohort_longitudinal.csv"
+  key: ["PATNO", "EVENT_ID"]
+  data_version: "20260728" # ppmi defined version: 20250902 * Not sure
+
+mri:
+  cortical_thickness:
+    file: "data/raw/ppmi/FS7_APARC_CTH_28Jul2026.csv"
+    key: ["PATNO", "EVENT_ID"]
+    data_version: "20260728" # ppmi defined version: 20250129 
+
+  cortical_surface_area:
+    file: "data/raw/ppmi/FS7_APARC_SA_28Jul2026.csv"
+    key: ["PATNO", "EVENT_ID"]
+    data_version: "20260728" # ppmi defined version: 20250129 
+
+  regional_volume:
+    file: "data/raw/ppmi/FS7_ASEG_VOL_28Jul2026.csv"
+    key: ["PATNO", "EVENT_ID"]
+    data_version: "20260728" # ppmi defined version: 20250129 
+
+genetics:
+  pathogenic_variants:
+    file: "data/raw/ppmi/iu_genetic_consensus_20251025_28Jul2026.csv"
+    key: ["PATNO"]
+    data_version: "20260728" # ppmi defined version: 20251025
+
+  polygenic_risk:
+    file: "data/raw/ppmi/PPMI_Project_9001_20250624_28Jul2026.csv"
+    key: ["PATNO", "EVENT_ID"]
+    data_version: "20260728" # ppmi defined version:  20251025 *
+
+biospecimen:
+  biomarkers:
+    file: "data/raw/ppmi/Current_Biospecimen_Analysis_Results_28Jul2026.csv"
+    key: ["PATNO", "CLINICAL_EVENT"]
+    data_version: "20260728" # ppmi defined version: 20180618 * Not sure
+
+  saa:
+    file: "data/raw/ppmi/SAA_Biospecimen_Analysis_Results_28Jul2026.csv"
+    key: ["PATNO", "CLINICAL_EVENT"]
+    data_version: "20260728" # ppmi defined version: 20260803 * Haha maybe not August cuz I downloaded in July Not sure

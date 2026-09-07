@@ -1,0 +1,20 @@
+# configs/analysis/missingness.yaml
+
+missingness:
+  enabled: true
+
+  participant_threshold: 0.5
+
+  patterns:
+    enabled: true
+    max_patterns: 20
+
+  outcome_analysis:
+    enabled: false
+
+  covariate_analysis:
+    enabled: false
+
+  output:
+    enabled: true
+    directory: output/analysis/missingness

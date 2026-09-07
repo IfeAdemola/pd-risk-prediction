@@ -1,0 +1,215 @@
+# PPMI prediction experiment configuration
+ 
+cohort:
+  file: "data/processed/cohort/ppmi_risk_cohort_multimodal_cdmgb.csv"
+  identifier: "PATNO"
+
+data_extraction:
+  timepoint: baseline        # longitudinal, followup
+
+modalities:
+
+  clinical:
+    enabled: false
+    type: tabular
+    data_files: 
+      clinical:
+        file: "data/processed/cohort/ppmi_risk_cohort_longitudinal.csv"
+        extraction: BL
+    features_file: "configs/features/ppmi_clinical_v1.yaml"
+    domains:
+      include:
+        - demographics
+        - family_history
+        - olfaction
+        - cognition
+        - sleep
+        - mood
+        - autonomic
+        - motor
+
+# using the dat data from curated file as it is more complete
+  dat:
+    enabled: false
+    type: tabular
+    data_files: 
+      dat:
+        file: "data/processed/cohort/ppmi_risk_cohort_longitudinal.csv"
+        extraction: BL
+    features_file: "configs/features/ppmi_dat.yaml"
+    domains:
+      include:
+        - striatum
+        - caudate
+        - putamen
+
+  mri:
+    enabled: false
+    type: tabular
+    data_files:
+      cortical_thickness:
+        file: "data/raw/ppmi/FS7_APARC_CTH_28Jul2026.csv"
+        extraction: BL
+      cortical_surface_area:
+        file: "data/raw/ppmi/FS7_APARC_SA_28Jul2026.csv"
+        extraction: BL
+      regional_volume:
+        file: "data/raw/ppmi/FS7_ASEG_VOL_28Jul2026.csv"
+        extraction: BL
+    features_file: "configs/features/ppmi_mri.yaml"
+    domains:
+      include:
+        - cortical_thickness
+        - cortical_surface_area
+        - regional_volume
+
+  biospecimen:
+    enabled: false
+    type: tabular
+    data_files: 
+      saa:
+        file: "data/raw/ppmi/SAA_Biospecimen_Analysis_Results_28Jul2026.csv"
+        extraction: BL
+    features_file: "configs/features/ppmi_biospecimen.yaml"
+    domains:
+      include:
+        - saa
+
+  genetics:
+    enabled: true
+    type: tabular
+    data_files:
+      pathogenic_variants:
+        file: "data/raw/ppmi/iu_genetic_consensus_20251025_28Jul2026.csv"
+        extraction: static
+      polygenic_risk:
+        file: "data/raw/ppmi/PPMI_Project_9001_20250624_28Jul2026.csv"
+        extraction: SC
+    features_file: "configs/features/ppmi_genetics.yaml"
+    domains:
+      include:
+        - pathogenic_variants
+        - polygenic_risk
+
+
+  
+
+
+selection:
+  method: config_list
+
+# TODO: group outcome input with outcome, don't let it float around
+inputs:
+  outcomes:
+    file: "data/processed/outcomes/ppmi_outcomes.csv"
+
+
+outcome:
+  name: pd_conversion
+
+  diagnosis:
+    column: PRIMDIAG
+    code: 1
+
+  definition:
+    method: confirmed_pd  # change method to conversion_definition, I'd also have like censoring_definition
+    # method: any_pd, confirmed_pd, persistent_pd
+
+  time:
+    origin: baseline_date
+    source:
+      from_outcomes: true
+    column: time_to_pd
+
+  censoring:
+    last_follow_up: true
+    death: true
+
+
+analysis:
+
+  type: survival
+  task:
+    name: time_to_event
+
+  time_horizon: 2 # years
+
+  validation:
+    strategy: stratified_kfold
+    folds: 5
+    random_state: 42
+
+  model:
+    #name: cox_ph
+    penalizer: 0.1
+
+  event_column:
+    pd_event
+
+  time_column:
+    time_to_pd
+
+  calibration:
+    enabled: true
+    n_groups: 4
+
+  brier:
+    enabled: true
+
+
+preprocessing:
+
+  numeric:
+    missing:
+      strategy: median
+
+    scaling:
+      enabled: true
+
+  binary:
+    missing:
+      strategy: most_frequent
+
+  categorical:
+    missing:
+      strategy: most_frequent
+
+    encoding:
+      method: one_hot
+      handle_unknown: ignore
+
+fusion:
+  strategy: early
+
+output: # For prediction dataset creation. Would be refactored later on, as output too vague
+
+  directory: "data/processed/prediction"
+
+  dataset_file:
+    "ppmi_prediction_dataset_v1.csv"
+
+  metadata_file:
+    "ppmi_prediction_metadata_v1.json"
+
+
+experiment:
+
+  name: null
+
+
+artifacts:
+
+  directory: "output/experiments"
+
+  save:
+    
+    config: true
+    metadata: true
+    summary: true
+    results: true
+    predictions: true
+    risk_groups: true
+    gray_test: true
+    calibration: true
+    plots: true
+    model: false

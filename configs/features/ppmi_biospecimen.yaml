@@ -1,0 +1,44 @@
+name: ppmi_biospecimen_v1
+
+description: >
+  Biospecimen-derived biomarkers for survival prediction of
+  Parkinson's disease conversion in the PPMI at-risk cohort.
+  Includes quantitative biomarker assays and alpha-synuclein
+  seed amplification assay results.
+
+modality: biospecimen
+
+timepoint:
+  baseline: false
+
+identifiers:
+  - PATNO
+  - CLINICAL_EVENT # EVENT_ID (in the other files)
+
+features:
+
+  #biomarkers:
+  #  continuous:
+  #    format: long,
+  #    columns:
+  #      # Populated from TESTNAME/TESTVALUE in
+  #      # Current_Biospecimen_Analysis_Results.csv
+  #      # Exact biomarker columns to be defined after
+  #      # inspecting the current PPMI TESTNAME values.
+      
+
+  saa: # alpha_synuclein_saa
+    categorical:
+      columns:
+        - SAA_Status
+
+metadata:
+  - SEX
+  - COHORT
+  - TYPE
+  - SAAMethod # Very important as there are two methods: assay length 150 hrs and 24 hrs
+  - SAA_Type
+  - RUNDATE
+  - PROJECTID
+  - PI_NAME
+  - PI_INSTITUTION

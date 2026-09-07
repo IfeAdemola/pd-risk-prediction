@@ -1,0 +1,27 @@
+dataset: PPMI
+
+outcomes:
+
+  pd:
+    diagnosis_code: 1
+
+  msa:
+    diagnosis_code: 11
+
+  dlb:
+    diagnosis_code: 5
+
+  death:
+    status_column: Death_Status
+    date_column: Death_Date
+
+trajectory:
+  pd:
+    include:
+      - persistent_pd
+      - pd_end_of_followup
+
+output:
+  directory: "data/processed/outcomes"
+  outcome_file: "ppmi_outcomes.csv"
+  metadata_file: "ppmi_outcome_metadata.json"

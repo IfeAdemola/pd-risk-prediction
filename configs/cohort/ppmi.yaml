@@ -1,0 +1,20 @@
+dataset: "PPMI"
+
+baseline_event: "BL"
+
+minimum_visits: 2
+
+at_risk_diagnoses:
+  - 17
+  - 23
+  - 24
+  - 25
+
+include_swedd: false
+
+output:
+  directory: "data/processed/cohort"
+  baseline_file: "ppmi_risk_cohort_baseline.csv"
+  longitudinal_file: "ppmi_risk_cohort_longitudinal.csv"
+  exclusions_file: "ppmi_exclusions.csv"
+  metadata_file: "cohort_metadata.json"

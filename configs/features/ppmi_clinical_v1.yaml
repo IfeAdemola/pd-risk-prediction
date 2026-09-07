@@ -1,0 +1,95 @@
+name: ppmi_clinical_v1
+
+description: >
+  Baseline clinical variables for survival prediction of
+  Parkinson's disease conversion in the PPMI at-risk cohort.
+
+modality: clinical
+
+timepoint:
+  baseline: true
+
+identifiers:
+  - PATNO
+  - EVENT_ID
+  - visit_date
+
+labels:
+  - PRIMDIAG
+
+features:
+
+  demographics:
+
+    continuous:
+      columns:
+        - age_at_visit
+        - EDUCYRS
+
+    binary:
+      columns:
+        - SEX
+
+  family_history:
+
+    binary:
+      columns:
+        - fampd
+
+  disease_history:
+
+    continuous:
+      columns:
+        - agediag
+        - ageonset
+
+  medication:
+
+    continuous:
+      columns:
+        - LEDD
+
+  olfaction:
+
+    continuous:
+      columns:
+        - upsit
+
+  cognition:
+
+    continuous:
+      columns:
+        - moca
+
+  sleep:
+
+    continuous:
+      columns:
+        - rem
+
+  mood:
+
+    continuous:
+      columns:
+        - gds
+        - stai_state
+        - stai_trait
+
+  autonomic:
+
+    continuous:
+      columns:
+        - scopa_gi
+        - scopa_ur
+        - scopa_cv
+        - scopa_therm
+        - scopa_pm
+        - scopa_sex
+
+  motor:
+
+    continuous:
+      columns:
+        - updrs1_score
+        - updrs2_score
+        - updrs3_score
